@@ -6,3 +6,4 @@ urlpatterns = [
     path('', FishListView.as_view(), name="fish_list"),
     path('product/<str:slug>', FishDetailView.as_view(), name="fish_detail"),
 ]
+

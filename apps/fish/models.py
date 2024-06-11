@@ -10,8 +10,8 @@ class Fish(models.Model):
     category = models.ForeignKey(
         FishCategory,
         on_delete=models.CASCADE,
-        related_name='fish',
-        verbose_name="Категория Рыбок"
+        related_name='fishes',
+        verbose_name="Категории рыб"
     )
     name = models.CharField(
         max_length=100,
@@ -64,5 +64,3 @@ class FishImage(models.Model):
     class Meta:
         verbose_name = "Изображение Рыбы"
         verbose_name_plural = "Изображение Рыбы"
-
-

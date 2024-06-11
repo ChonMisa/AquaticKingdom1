@@ -9,9 +9,9 @@ admin.site.register(
     DraggableMPTTAdmin,
     list_display=(
         'tree_actions',
-        'indented_title',
+        'indented_name',
     ),
     list_display_links=(
-        'indented_title',
+        'indented_name',
     ),
 )
