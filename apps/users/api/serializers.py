@@ -5,13 +5,13 @@ from apps.users.models import CustomUser
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['id', 'username', 'display_name', 'avatar']
+        fields = ['id', 'username', 'display_name']
 
 
 class CustomUserCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['username', 'display_name', 'avatar', 'password']
+        fields = ['username', 'display_name', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -19,6 +19,5 @@ class CustomUserCreateSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             display_name=validated_data['display_name'],
             password=validated_data['password'],
-            avatar=validated_data.get('avatar')
         )
         return user
