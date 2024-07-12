@@ -20,6 +20,13 @@ class Fish(models.Model):
     description = models.TextField(
         verbose_name="Описание рыбки"
     )
+    stock = models.PositiveIntegerField(
+        default=0,
+    )
+    restock_date = models.DateTimeField(
+        null=True,
+        blank=True,
+    )
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,

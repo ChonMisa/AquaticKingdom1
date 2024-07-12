@@ -5,7 +5,7 @@ from apps.cart.models import Cart, Item
 
 
 class CartDetailView(generic.ListView):
-    template_name = 'cart_detail.html'
+    template_name = '/'
     context_object_name = 'cart'
 
     def get_queryset(self):
