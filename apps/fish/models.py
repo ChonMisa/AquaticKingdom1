@@ -10,8 +10,8 @@ class Fish(models.Model):
     category = models.ForeignKey(
         FishCategory,
         on_delete=models.CASCADE,
-        related_name='fish',
-        verbose_name="Категория Рыбок"
+        related_name='fishes',
+        verbose_name="Категории рыб"
     )
     name = models.CharField(
         max_length=100,
@@ -19,6 +19,13 @@ class Fish(models.Model):
     )
     description = models.TextField(
         verbose_name="Описание рыбки"
+    )
+    stock = models.PositiveIntegerField(
+        default=0,
+    )
+    restock_date = models.DateTimeField(
+        null=True,
+        blank=True,
     )
     price = models.DecimalField(
         max_digits=10,
@@ -64,5 +71,3 @@ class FishImage(models.Model):
     class Meta:
         verbose_name = "Изображение Рыбы"
         verbose_name_plural = "Изображение Рыбы"
-
-
