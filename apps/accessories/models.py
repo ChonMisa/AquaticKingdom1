@@ -11,6 +11,13 @@ class Accessory(models.Model):
     description = models.TextField(
         verbose_name="Описание"
     )
+    stock = models.PositiveIntegerField(
+        default=0,
+    )
+    restock_date = models.DateTimeField(
+        null=True,
+        blank=True,
+    )
     image = models.ImageField(
         upload_to=accessories,
         verbose_name="Изображение",
