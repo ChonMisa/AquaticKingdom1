@@ -87,3 +87,17 @@ class Item(models.Model):
     class Meta:
         verbose_name = "Элемент Корзины"
         verbose_name_plural = "Элементы Корзин"
+
+
+class Order(models.Model):
+    DELIVERY_CHOICES = (
+        ('delivery', 'Delivery'),
+        ('pickup', 'Pickup'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    items = models.ManyToManyField('Item')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=20, default='pending')
+    delivery_type = models.CharField(max_length=10, choices=DELIVERY_CHOICES, default='delivery')
