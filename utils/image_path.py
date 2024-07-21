@@ -3,12 +3,12 @@ def fish_upload(instance, filename):
 
 
 def accessories(instance, filename):
-    return f'accessor_images/{instance.accessory.id}/{filename}'
+    return f'accessor_images/{instance.accessory_ac.id}/{filename}'
 
 
 def upload_avatar_for_user(instance, filename):
-    return f'upload_avatar_for_user/{instance.avatar.id}/{filename}'
+    return f'upload_avatar_for_user/{instance.id}/{filename}'
 
 
 def fish_food_images(instance, filename):
-    return f'ffood_images/{instance.ffood.id}/{filename}'
+    return f'ffood_images/{instance.ffoodd.id}/{filename}'

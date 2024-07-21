@@ -19,12 +19,12 @@ class Accessory(models.Model):
         null=True,
         blank=True,
     )
-    image = models.ImageField(
-        upload_to=accessories,
-        verbose_name="Изображение",
-        blank=True,
-        null=True
-    )
+    # image = models.ImageField(
+    #     upload_to=accessories,
+    #     verbose_name="Изображение",
+    #     blank=True,
+    #     null=True
+    # )
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,

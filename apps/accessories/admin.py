@@ -16,6 +16,7 @@ class AccessoryImageAdmin(admin.ModelAdmin):
 @admin.register(Accessory)
 class AccessoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'price']
+    list_filter = ['title']
     search_fields = ['title']
     prepopulated_fields = {'slug': ('title',)}
     list_per_page = 100
