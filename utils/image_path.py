@@ -7,8 +7,8 @@ def accessories(instance, filename):
 
 
 def upload_avatar_for_user(instance, filename):
-    return f'upload_avatar_for_user/{instance.id}/{filename}'
+    return f'upload_avatar_for_user/{instance.avatar.id}/{filename}'
 
 
 def fish_food_images(instance, filename):
-    return f'ffood_images/{instance.id}/{filename}'
+    return f'ffood_images/{instance.ffood.id}/{filename}'

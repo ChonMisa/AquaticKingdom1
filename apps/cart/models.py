@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from apps.fish.models import Fish
 from apps.accessories.models import Accessory
 from apps.fish_food.models import FishFood
+from utils.image_path import upload_avatar_for_user
 
 User = get_user_model()
 
@@ -13,7 +14,7 @@ class Cart(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name="cart",
-        verbose_name="Пользователь"
+        verbose_name="Пользователь",
     )
 
     def __str__(self):
