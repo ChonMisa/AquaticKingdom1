@@ -1,7 +1,8 @@
-from django.urls import path
-from .views import FishFoodListCreateView, FishFoodDetailView
+from rest_framework.routers import DefaultRouter
+from apps.fish_food.api.views import FishFoodViewSet
 
-urlpatterns = [
-    path('fishfoods/', FishFoodListCreateView.as_view(), name='fishfood-list-create'),
-    path('fishfoods/<int:pk>/', FishFoodDetailView.as_view(), name='fishfood-detail'),
-]
+router = DefaultRouter()
+
+router.register('fish-food', FishFoodViewSet)
+
+urlpatterns = router.urls

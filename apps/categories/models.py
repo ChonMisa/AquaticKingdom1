@@ -3,7 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class FishCategory(MPTTModel):
-    title = models.CharField(
+    name = models.CharField(
         max_length=50,
         verbose_name='Название'
     )
@@ -23,7 +23,7 @@ class FishCategory(MPTTModel):
     )
 
     def __str__(self):
-        return self.title
+        return self.name
 
     def indented_name(self):
-        return f"--- {self.title}"
+        return f"--- {self.name}"

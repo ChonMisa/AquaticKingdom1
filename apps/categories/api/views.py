@@ -1,13 +1,8 @@
-from rest_framework import generics
+from rest_framework import viewsets
 from apps.categories.models import FishCategory
 from .serializers import FCategorySerializer
 
 
-class FCategoryListCreateView(generics.ListCreateAPIView):
-    queryset = FishCategory.objects.all()
-    serializer_class = FCategorySerializer
-
-
-class FCategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+class FCategoryViewSet(viewsets.ModelViewSet):
     queryset = FishCategory.objects.all()
     serializer_class = FCategorySerializer

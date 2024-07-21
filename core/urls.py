@@ -16,6 +16,7 @@ urlpatterns = [
     path('', include('apps.fish.urls')),
     path('', include('apps.fish_food.urls')),
     path('', include('apps.accessories.urls')),
+    path('', include('apps.categories.urls')),
     path('', include('apps.cart.urls')),
     path('', include('apps.users.urls')),
     path('login/', LoginView.as_view(), name='login'),

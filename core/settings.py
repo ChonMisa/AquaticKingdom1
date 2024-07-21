@@ -1,6 +1,7 @@
+import os
 from pathlib import Path
 from datetime import timedelta
-
+import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,11 +40,11 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+
     )
 }
 
@@ -59,10 +60,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-
-)
 
 ROOT_URLCONF = 'core.urls'
 
@@ -130,19 +127,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_URL = "/static/"
-STATIC_DIR = BASE_DIR / 'static'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    STATIC_DIR,
+    os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

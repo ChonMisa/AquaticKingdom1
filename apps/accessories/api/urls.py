@@ -1,7 +1,8 @@
-from django.urls import path
-from .views import AccessoryListCreateView, AccessoryDetailView
+from rest_framework.routers import DefaultRouter
+from .views import AccessoryViewSet
 
-urlpatterns = [
-    path('accessories/', AccessoryListCreateView.as_view(), name='accessory-list-create'),
-    path('accessories/<int:pk>/', AccessoryDetailView.as_view(), name='accessory-detail'),
-]
+router = DefaultRouter()
+
+router.register(r'accessories', AccessoryViewSet)
+
+urlpatterns = router.urls

@@ -12,7 +12,6 @@ admin.site.register(
         'indented_name',
     ),
     list_display_links=(
-        'indented_title',
+        'indented_name',
     ),
-
 )

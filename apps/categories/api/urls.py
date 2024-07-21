@@ -1,7 +1,9 @@
-from django.urls import path
-from .views import FCategoryListCreateView, FCategoryDetailView
+from rest_framework.routers import DefaultRouter
+from .views import FCategoryViewSet
 
-urlpatterns = [
-    path('categories/', FCategoryListCreateView.as_view(), name='category-list-create'),
-    path('categories/<int:pk>/', FCategoryDetailView.as_view(), name='category-detail'),
-]
+router = DefaultRouter()
+
+
+router.register(r'categories', FCategoryViewSet)
+
+urlpatterns = router.urls

@@ -6,4 +6,3 @@ router = DefaultRouter()
 router.register(r'users', CustomUserViewSet)
 
 urlpatterns = router.urls
-

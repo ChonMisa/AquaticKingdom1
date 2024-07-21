@@ -1,9 +1,12 @@
 from rest_framework import serializers
-
 from apps.cart.models import Cart, Item, Order
 
 
 class ItemSerializer(serializers.ModelSerializer):
+    fish = serializers.StringRelatedField()  # Отображает строковое представление модели
+    accessory = serializers.StringRelatedField()  # Отображает строковое представление модели
+    ffood = serializers.StringRelatedField()  # Отображает строковое представление модели
+
     class Meta:
         model = Item
         fields = ['id', 'fish', 'accessory', 'ffood', 'quantity', 'cart']
@@ -21,7 +24,9 @@ class CartSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    items = ItemSerializer(many=True, read_only=True)  # Использование вложенного сериализатора для подробной информации
+
     class Meta:
         model = Order
         fields = ['id', 'user', 'items', 'created_at', 'updated_at', 'status', 'delivery_type']
-        read_only_fields = ['id', 'user', 'created_at', 'updated_at', 'status']
+        read_only_fields = ['id', 'created_at', 'updated_at', 'status']

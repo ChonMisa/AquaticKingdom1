@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from apps.fish.models import Fish
 from apps.accessories.models import Accessory
 from apps.fish_food.models import FishFood
-from apps.users.models import CustomUser
 
 User = get_user_model()
 
@@ -63,6 +62,32 @@ class Item(models.Model):
         related_name="items_cart",
         verbose_name="Корзина"
     )
+
+    def check_stock(self):
+        if self.fish:
+            if self.fish.stock < self.quantity:
+                restock_date = self.fish.restock_date or 'неизвестна'
+                return f'Недостаточно товара: {self.fish.name}. Ожидаемая дата пополнения: {restock_date}'
+        elif self.accessory:
+            if self.accessory.stock < self.quantity:
+                restock_date = self.accessory.restock_date or 'неизвестна'
+                return f'Недостаточно товара: {self.accessory.title}. Ожидаемая дата пополнения: {restock_date}'
+        elif self.ffood:
+            if self.ffood.stock < self.quantity:
+                restock_date = self.ffood.restock_date or 'неизвестна'
+                return f'Недостаточно товара: {self.ffood.title}. Ожидаемая дата пополнения: {restock_date}'
+        return None
+
+    def update_stock(self):
+        if self.fish:
+            self.fish.stock -= self.quantity
+            self.fish.save()
+        elif self.accessory:
+            self.accessory.stock -= self.quantity
+            self.accessory.save()
+        elif self.ffood:
+            self.ffood.stock -= self.quantity
+            self.ffood.save()
 
     def get_subtotal_sum(self):
         if self.fish:
