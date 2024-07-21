@@ -8,5 +8,3 @@ router = DefaultRouter()
 router.register('fish', FishViewSet)
 
 urlpatterns = router.urls
-
-

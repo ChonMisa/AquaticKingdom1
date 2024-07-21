@@ -3,6 +3,7 @@ from rest_framework import generics
 from django_filters import rest_framework
 from apps.accessories.models import Accessory
 
+from apps.accessories.models import Accessory
 from .serializers import AccessorySerializer
 
 
