@@ -24,24 +24,3 @@ class FishViewSet(viewsets.ModelViewSet):
         context = super().get_serializer_context()
         context['request'] = self.request
         return context
-#
-#
-# class FishCreateAPIView(generics.CreateAPIView):
-#     queryset = Fish.objects.all()
-#     serializer_class = FishSerializer
-#
-#
-# class FishImageCreateAPIView(generics.ListCreateAPIView):
-#     queryset = FishImage.objects.all()
-#     serializer_class = FishImageSerializer
-#
-#
-# class FishUpdateDeleteRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Fish.objects.all()
-#     serializer_class = FishImageSerializer
-#
-#
-# class FishImageUpdateDeleteRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = FishImage.objects.all()
-#     serializer_class = FishImageSerializer
-#
