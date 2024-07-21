@@ -12,13 +12,13 @@ class Accessory(models.Model):
     description = models.TextField(
         verbose_name="Описание"
     )
-    # stock = models.PositiveIntegerField(
-    #     default=0,
-    # )
-    # restock_date = models.DateTimeField(
-    #     null=True,
-    #     blank=True,
-    # )
+    stock = models.PositiveIntegerField(
+        default=0,
+    )
+    restock_date = models.DateTimeField(
+        null=True,
+        blank=True,
+    )
     image = models.ImageField(
         upload_to=accessories,
         verbose_name="Изображение",
@@ -41,7 +41,7 @@ class Accessory(models.Model):
 
 
 class AccessoryImage(models.Model):
-    accessory = models.ForeignKey(
+    accessory_ac = models.ForeignKey(
         Accessory,
         on_delete=models.CASCADE,
         related_name='accessory_images',
@@ -57,7 +57,7 @@ class AccessoryImage(models.Model):
         super().delete(using=None, keep_parents=False)
 
     def __str__(self):
-        return f'{self.accessory.title}'
+        return f'{self.accessory_ac.title}'
 
     class Meta:
         verbose_name = "Изображение аксессуара"
